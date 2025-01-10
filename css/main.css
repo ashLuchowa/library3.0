@@ -52,12 +52,18 @@ table {
   border-spacing: 0;
 }
 
-.main-library {
+.container {
   padding: 20px;
+}
+
+.main-library {
+  background-color: red;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  justify-items: center;
 }
 .main-library .book-item {
+  background-color: yellow;
   width: 350px;
   height: 350px;
   border: 2px solid black;

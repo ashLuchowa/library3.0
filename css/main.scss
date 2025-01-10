@@ -2,13 +2,18 @@
 @import 'reset';
 
 // GENERAL
+.container {
+    padding: 20px;
+}
 
 // MAIN
 .main-library {
-    padding: 20px;
+    background-color: red;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    justify-items: center;
     .book-item {
+        background-color: yellow;
         width: 350px;
         height: 350px;
         border: 2px solid black;
