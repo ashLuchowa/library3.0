@@ -1,6 +1,6 @@
 // Default Book Items
 let harryPotter = new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling", 223, true)
-let pridePrejudice = new Book("Pride and Prejudice", "	Jane Austen", 345, true)
+let pridePrejudice = new Book("Pride and Prejudice", "Jane Austen", 345, true)
 
 // Book Array Library
 const myLibrary = [harryPotter, pridePrejudice];
