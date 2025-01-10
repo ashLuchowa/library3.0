@@ -2,3 +2,15 @@
 @import 'reset';
 
 // GENERAL
+
+// MAIN
+.main-library {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    .book-item {
+        width: 350px;
+        height: 350px;
+        border: 2px solid black;
+    }
+}

@@ -50,4 +50,15 @@ q:before, q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+.main-library {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+.main-library .book-item {
+  width: 350px;
+  height: 350px;
+  border: 2px solid black;
 }/*# sourceMappingURL=main.css.map */
