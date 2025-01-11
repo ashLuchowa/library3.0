@@ -84,7 +84,53 @@ function addBtn() {
 
     //Add text
     addBtn.textContent = 'Add Book';
+
+    // Add Event Listener
+    addBtn.addEventListener('click', pressAddBtn); 
+}
+
+// Add Button Event Listener
+function pressAddBtn() {
+    alert('You Pressed!');
+};
+
+// Create Form UI
+function createForm() {
+    // Main Form div Container
+    const addBookForm = document.createElement('div');
+    const formContainer = document.createElement('form');
+    addBookForm.classList.add('addBookForm');
+    mainContainer.appendChild(addBookForm);
+    addBookForm.appendChild(formContainer);
+
+    // Form Content
+    function formContent(value) {
+        // Individual divs
+        const mainForm = document.createElement('div');
+        mainForm.classList.add(`form-${value}`)
+        addBookForm.appendChild(mainForm);
+        formContainer.appendChild(mainForm);
+
+        // label
+        const titleLabel = document.createElement('label');
+        titleLabel.setAttribute('for', `${value}`);
+        mainForm.appendChild(titleLabel);
+        titleLabel.textContent = `${value}: `;
+
+        // Input
+        const titleInput = document.createElement('input');
+        titleInput.type = 'text';
+        titleInput.setAttribute('id', `${value}`);
+        mainForm.appendChild(titleInput);
+        titleInput.setAttribute('name', `${value}`);
+    }
+
+    formContent('title');
+    formContent('author');
+    formContent('pages');
+    formContent('read');
 }
 
 addBtn();
+createForm();
 addBookToLibrary();
