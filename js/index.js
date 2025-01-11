@@ -104,7 +104,7 @@ function createForm() {
     addBookForm.appendChild(formContainer);
 
     // Form Content
-    function formContent(value) {
+    function formContent(value, inputType) {
         // Individual divs
         const mainForm = document.createElement('div');
         mainForm.classList.add(`form-${value}`)
@@ -112,23 +112,32 @@ function createForm() {
         formContainer.appendChild(mainForm);
 
         // label
-        const titleLabel = document.createElement('label');
-        titleLabel.setAttribute('for', `${value}`);
-        mainForm.appendChild(titleLabel);
-        titleLabel.textContent = `${value}: `;
+        const labelContainer = document.createElement('label');
+        labelContainer.setAttribute('for', `${value}`);
+        mainForm.appendChild(labelContainer);
+        labelContainer.textContent = `${value}: `;
 
         // Input
-        const titleInput = document.createElement('input');
-        titleInput.type = 'text';
-        titleInput.setAttribute('id', `${value}`);
-        mainForm.appendChild(titleInput);
-        titleInput.setAttribute('name', `${value}`);
+        const titleContainer = document.createElement('input');
+        titleContainer.type = `${inputType}`;
+        titleContainer.setAttribute('id', `${value}`);
+        mainForm.appendChild(titleContainer);
+        titleContainer.setAttribute('name', `${value}`);
     }
 
-    formContent('title');
-    formContent('author');
-    formContent('pages');
-    formContent('read');
+    formContent('title', 'text');
+    formContent('author', 'text');
+    formContent('pages', 'number');
+    formContent('read', 'checkbox');
+
+    // Submit Button
+    function submitBtn() {
+        const submitBtnContainer = document.createElement('input');
+        formContainer.appendChild(submitBtnContainer);
+        submitBtnContainer.type = 'submit';
+        submitBtnContainer.value = 'submit';
+    }
+    submitBtn();
 }
 
 addBtn();
