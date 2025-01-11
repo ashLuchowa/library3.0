@@ -2,9 +2,9 @@
 @import 'reset';
 
 // GENERAL
-.container {
-    padding: 20px;
-}
+// .container {
+//     padding: 20px;
+// }
 
 // MAIN
 .main-library {
@@ -18,4 +18,9 @@
         height: 350px;
         border: 2px solid black;
     }
+}
+
+.add-btn {
+    display: flex;
+    justify-content: end;
 }

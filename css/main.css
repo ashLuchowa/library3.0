@@ -52,10 +52,6 @@ table {
   border-spacing: 0;
 }
 
-.container {
-  padding: 20px;
-}
-
 .main-library {
   background-color: red;
   display: grid;
@@ -67,4 +63,9 @@ table {
   width: 350px;
   height: 350px;
   border: 2px solid black;
+}
+
+.add-btn {
+  display: flex;
+  justify-content: end;
 }/*# sourceMappingURL=main.css.map */

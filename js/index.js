@@ -69,4 +69,19 @@ function addBookToLibrary() {
     }
 };
 
+function addBtn() {
+    // btn container
+    const bookBtn = document.createElement('div');
+    bookBtn.classList.add('add-btn');
+    mainContainer.appendChild(bookBtn);
+    
+    // add button
+    const addBtn = document.createElement('button');
+    bookBtn.appendChild(addBtn);
+
+    //Add text
+    addBtn.textContent = 'Add Book'
+}
+
+addBtn();
 addBookToLibrary();
