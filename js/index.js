@@ -9,7 +9,6 @@ const myLibrary = [harryPotter, pridePrejudice, theArt, intelligentInvestor];
 
 // Display Books UI
 const mainContainer = document.querySelector('.container');
-const mainLibrary = document.querySelector('.main-library');
 
 // Book Constructor
 function Book(title, author, pages, read) {
@@ -21,6 +20,10 @@ function Book(title, author, pages, read) {
 
 // Push each books to the library
 function addBookToLibrary() {
+    const mainLibrary = document.createElement('div');
+    mainLibrary.classList.add('main-library');
+    mainContainer.appendChild(mainLibrary);
+
     for(let i = 0; i < myLibrary.length; i++) {
         // Create book item container
         const bookItem = document.createElement('div');
@@ -80,7 +83,7 @@ function addBtn() {
     bookBtn.appendChild(addBtn);
 
     //Add text
-    addBtn.textContent = 'Add Book'
+    addBtn.textContent = 'Add Book';
 }
 
 addBtn();
