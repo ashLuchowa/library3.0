@@ -57,6 +57,9 @@ function addBookToLibrary() {
         const readCheckbox = document.createElement('input');
         bookRead.appendChild(readCheckbox);
         readCheckbox.type = 'checkbox';
+        if(myLibrary[i].read === true) {
+            readCheckbox.checked = true;
+        }
         
         const readToggleStyle = document.createElement('span');
         bookRead.appendChild(readToggleStyle);
