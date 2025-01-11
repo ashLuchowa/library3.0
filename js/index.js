@@ -24,52 +24,54 @@ function addBookToLibrary() {
     mainLibrary.classList.add('main-library');
     mainContainer.appendChild(mainLibrary);
 
-    for(let i = 0; i < myLibrary.length; i++) {
+    // Loop through each books in library array
+    for (let i = 0; i < myLibrary.length; i++) {
         // Create book item container
         const bookItem = document.createElement('div');
         mainLibrary.appendChild(bookItem);
         bookItem.classList.add('book-item');
 
-        // title
-        const bookTitle = document.createElement('div');
-        bookItem.appendChild(bookTitle);
-        bookTitle.classList.add('book-title');
-        bookTitle.textContent = myLibrary[i].title;
+        // Generate book details
+        function generateBookInfo(element) {
+            const bookDetail = document.createElement('div');
+            bookItem.appendChild(bookDetail);
+            bookDetail.classList.add(`book-${element}`);
 
-        // Author
-        const bookAuthor = document.createElement('div');
-        bookItem.appendChild(bookAuthor);
-        bookAuthor.classList.add('book-author');
-        bookAuthor.textContent = myLibrary[i].author;
+            if (element === 'title') {
+                bookDetail.textContent = myLibrary[i].title;
+            } else if (element === 'author') {
+                bookDetail.textContent = myLibrary[i].author;
+            } else if (element === 'pages') {
+                bookDetail.textContent = myLibrary[i].pages;
+            } else if (element === 'read') {
+                const bookRead = document.createElement('div');
+                bookItem.appendChild(bookRead);
+                bookRead.classList.add('book-read');
 
-        // Pages
-        const bookPages = document.createElement('div');
-        bookItem.appendChild(bookPages);
-        bookPages.classList.add('book-pages');
-        bookPages.textContent = myLibrary[i].pages;
+                const readSwitch = document.createElement('label');
+                bookRead.appendChild(readSwitch);
+                readSwitch.classList.add('Switch');
 
-        // Read
-        const bookRead = document.createElement('div');
-        bookItem.appendChild(bookRead);
-        bookRead.classList.add('book-read');
+                const readCheckbox = document.createElement('input');
+                bookRead.appendChild(readCheckbox);
+                readCheckbox.type = 'checkbox';
+                if (myLibrary[i].read === true) {
+                    readCheckbox.checked = true;
+                }
 
-        const readSwitch = document.createElement('label');
-        bookRead.appendChild(readSwitch);
-        readSwitch.classList.add('Switch');
+                const readToggleStyle = document.createElement('span');
+                bookRead.appendChild(readToggleStyle);
+                readToggleStyle.classList.add('slider');
+            };
+        };
 
-        const readCheckbox = document.createElement('input');
-        bookRead.appendChild(readCheckbox);
-        readCheckbox.type = 'checkbox';
-        if(myLibrary[i].read === true) {
-            readCheckbox.checked = true;
-        }
-        
-        const readToggleStyle = document.createElement('span');
-        bookRead.appendChild(readToggleStyle);
-        readToggleStyle.classList.add('slider');
+        generateBookInfo('title');
+        generateBookInfo('author');
+        generateBookInfo('pages');
+        generateBookInfo('read');
 
         console.log(bookItem);
-    }
+    };
 };
 
 function addBtn() {
@@ -77,7 +79,7 @@ function addBtn() {
     const bookBtn = document.createElement('div');
     bookBtn.classList.add('add-btn');
     mainContainer.appendChild(bookBtn);
-    
+
     // add button
     const addBtn = document.createElement('button');
     bookBtn.appendChild(addBtn);
@@ -86,8 +88,8 @@ function addBtn() {
     addBtn.textContent = 'Add Book';
 
     // Add Event Listener
-    addBtn.addEventListener('click', pressAddBtn); 
-}
+    addBtn.addEventListener('click', pressAddBtn);
+};
 
 // Add Button Event Listener
 function pressAddBtn() {
@@ -136,9 +138,14 @@ function createForm() {
         formContainer.appendChild(submitBtnContainer);
         submitBtnContainer.type = 'submit';
         submitBtnContainer.value = 'submit';
+
+        // Submit the form
+        submitBtnContainer.addEventListener('click', ()=> {
+            alert('form submitted!');
+        });
     }
     submitBtn();
-}
+};
 
 addBtn();
 createForm();
