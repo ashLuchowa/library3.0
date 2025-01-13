@@ -31,6 +31,7 @@ function renderBook() {
         const bookItem = document.createElement('div');
         mainLibrary.appendChild(bookItem);
         bookItem.classList.add('book-item');
+        bookItem.setAttribute('key', myLibrary[i]);
 
         // Generate book details
         function renderBookInfo(element) {
@@ -69,6 +70,9 @@ function renderBook() {
         renderBookInfo('author');
         renderBookInfo('pages');
         renderBookInfo('read');
+
+        // Display Delete Button
+        deleteBtn(bookItem, i);
     };
 };
 
@@ -153,6 +157,28 @@ function submitForm() {
     renderBook();
     console.log(myLibrary);
 };
+
+// Delete Btn UI
+function deleteBtn(result, index) {
+    const delBtnContainer = document.createElement('div');
+    result.appendChild(delBtnContainer);
+    delBtnContainer.classList.add('del-book');
+    delBtnContainer.textContent = 'X';
+
+    // Set individual data attributes to each delete button
+    delBtnContainer.setAttribute('data-index', index);
+
+    // Delete Book Event Listener
+    delBtnContainer.addEventListener('click', deleteBook);
+}
+
+// Delete Book Event
+function deleteBook(e) {
+    const index = e.target.getAttribute('data-index');
+    myLibrary.splice(index, 1);
+    renderBook();
+    console.log(myLibrary);
+}
 
 addBtn();
 createForm();

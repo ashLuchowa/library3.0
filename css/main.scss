@@ -13,6 +13,7 @@
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     justify-items: center;
     .book-item {
+        position: relative;
         background-color: yellow;
         width: 350px;
         height: 350px;
@@ -32,4 +33,17 @@
     .form-active {
         display: block;
     }
+}
+
+.del-book {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+    background-color: red;
+    padding: 3px 6px;
+    border-radius: 20px;
 }
