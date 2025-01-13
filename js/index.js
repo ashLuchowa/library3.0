@@ -180,9 +180,14 @@ function deleteBtn(result, index) {
 // Delete Book Event
 function deleteBook(e) {
     const index = e.target.getAttribute('data-index');
-    myLibrary.splice(index, 1);
-    renderBook();
-    console.log(myLibrary);
+    const delResult = confirm(`Delete book?`);
+
+    if(delResult === true) {
+        myLibrary.splice(index, 1);
+        renderBook();
+    } else {
+        alert('Nope!');
+    }
 }
 
 addBtn();
