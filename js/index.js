@@ -1,11 +1,11 @@
 // Default Book Items
-let harryPotter = new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling", 223, true);
-let pridePrejudice = new Book("Pride and Prejudice", "Jane Austen", 345, true);
-let theArt = new Book("The Subtle Art of Not Giving a F*ck", "Mark Manson", 224, false);
-let intelligentInvestor = new Book("The Intelligent Investor", "Benjamin Graham", 640, true);
+const harryPotter = new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling", 223, true);
+const pridePrejudice = new Book("Pride and Prejudice", "Jane Austen", 345, true);
+const theArt = new Book("The Subtle Art of Not Giving a F*ck", "Mark Manson", 224, false);
+const intelligentInvestor = new Book("The Intelligent Investor", "Benjamin Graham", 640, true);
 
 // Book Array Library
-const myLibrary = [harryPotter, pridePrejudice, theArt, intelligentInvestor];
+let myLibrary = [harryPotter, pridePrejudice, theArt, intelligentInvestor];
 
 // Display Books UI
 const mainContainer = document.querySelector('.container');
@@ -19,10 +19,9 @@ function Book(title, author, pages, read) {
     this.read = read;
 };
 
-// Push each books to the library
+// Display each books to the library
 function addBookToLibrary() {
-    const mainLibrary = document.createElement('div');
-    mainLibrary.classList.add('main-library');
+    const mainLibrary = document.querySelector('.main-library');
     mainContainer.appendChild(mainLibrary);
 
     // Loop through each books in library array
@@ -65,7 +64,6 @@ function addBookToLibrary() {
                 readToggleStyle.classList.add('slider');
             };
         };
-
         generateBookInfo('title');
         generateBookInfo('author');
         generateBookInfo('pages');
@@ -132,7 +130,7 @@ function createForm() {
     formContent('pages', 'number');
     formContent('read', 'checkbox');
 
-    // Submit Button
+    // Submit Button UI
     function submitBtn() {
         const submitBtnContainer = document.createElement('input');
         formContainer.appendChild(submitBtnContainer);
@@ -140,8 +138,12 @@ function createForm() {
         submitBtnContainer.value = 'submit';
 
         // Submit the form
-        submitBtnContainer.addEventListener('click', ()=> {
-            alert('form submitted!');
+        submitBtnContainer.addEventListener('click', (e)=> {
+            e.preventDefault();
+            const newBook = new Book(this.title.value, this.author.value, this.pages.value, this.read.checked);
+            myLibrary.push(newBook);
+            addBookToLibrary();
+            console.log(myLibrary);
         });
     }
     submitBtn();
