@@ -39,14 +39,19 @@ function renderBook() {
             bookItem.appendChild(bookDetail);
             bookDetail.classList.add(`book-${element}`);
 
+            // Generate Text UI
+            const bookReadText = document.createElement('p');
+            bookDetail.appendChild(bookReadText);
+            bookReadText.textContent = 'Read';
+
             if (element === 'title') {
-                bookDetail.textContent = myLibrary[i].title;
+                bookDetail.textContent = `${myLibrary[i].title}`;
             } else if (element === 'author') {
-                bookDetail.textContent = myLibrary[i].author;
+                bookDetail.textContent = `By ${myLibrary[i].author}`;
             } else if (element === 'pages') {
-                bookDetail.textContent = myLibrary[i].pages;
+                bookDetail.textContent = `Pages: ${myLibrary[i].pages}`;
             } else if (element === 'read') {
-                const bookRead = document.createElement('div');
+                const bookRead = document.createElement('label');
                 bookItem.appendChild(bookRead);
                 bookRead.classList.add('book-read');
 
