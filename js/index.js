@@ -9,6 +9,7 @@ let myLibrary = [harryPotter, pridePrejudice, theArt, intelligentInvestor];
 
 // Display Books UI
 const mainContainer = document.querySelector('.container');
+const mainLibrary = document.querySelector('.main-library');
 let formContainer = document.createElement('form');
 
 // Book Constructor
@@ -20,8 +21,8 @@ function Book(title, author, pages, read) {
 };
 
 // Display each books to the library
-function addBookToLibrary() {
-    const mainLibrary = document.querySelector('.main-library');
+function renderBook() {
+    mainLibrary.innerHTML = '';
     mainContainer.appendChild(mainLibrary);
 
     // Loop through each books in library array
@@ -32,7 +33,7 @@ function addBookToLibrary() {
         bookItem.classList.add('book-item');
 
         // Generate book details
-        function generateBookInfo(element) {
+        function renderBookInfo(element) {
             const bookDetail = document.createElement('div');
             bookItem.appendChild(bookDetail);
             bookDetail.classList.add(`book-${element}`);
@@ -64,15 +65,14 @@ function addBookToLibrary() {
                 readToggleStyle.classList.add('slider');
             };
         };
-        generateBookInfo('title');
-        generateBookInfo('author');
-        generateBookInfo('pages');
-        generateBookInfo('read');
-
-        console.log(bookItem);
+        renderBookInfo('title');
+        renderBookInfo('author');
+        renderBookInfo('pages');
+        renderBookInfo('read');
     };
 };
 
+// Render +Book UI
 function addBtn() {
     // btn container
     const bookBtn = document.createElement('div');
@@ -90,12 +90,12 @@ function addBtn() {
     addBtn.addEventListener('click', pressAddBtn);
 };
 
-// Add Button Event Listener
+// +Book Event Listener
 function pressAddBtn() {
     formContainer.classList.toggle('form-active');
 };
 
-// Create Form UI
+// Render Book Form UI
 function createForm() {
     // Main Form div Container
     const addBookForm = document.createElement('div');
@@ -131,24 +131,29 @@ function createForm() {
     formContent('read', 'checkbox');
 
     // Submit Button UI
-    function submitBtn() {
+    function submitBtnUI() {
         const submitBtnContainer = document.createElement('input');
         formContainer.appendChild(submitBtnContainer);
         submitBtnContainer.type = 'submit';
         submitBtnContainer.value = 'submit';
 
-        // Submit the form
+        //Submit the Form
         submitBtnContainer.addEventListener('click', (e)=> {
             e.preventDefault();
-            const newBook = new Book(this.title.value, this.author.value, this.pages.value, this.read.checked);
-            myLibrary.push(newBook);
-            addBookToLibrary();
-            console.log(myLibrary);
+            submitForm();
         });
     }
-    submitBtn();
+    submitBtnUI();
+};
+
+// Submit the form
+function submitForm() {
+    let newBook = new Book(this.title.value, this.author.value, this.pages.value, this.read.checked);
+    myLibrary.push(newBook);
+    renderBook();
+    console.log(myLibrary);
 };
 
 addBtn();
 createForm();
-addBookToLibrary();
+renderBook();
