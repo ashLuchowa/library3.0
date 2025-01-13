@@ -68,4 +68,11 @@ table {
 .add-btn {
   display: flex;
   justify-content: end;
+}
+
+.addBookForm form {
+  display: none;
+}
+.addBookForm .form-active {
+  display: block;
 }/*# sourceMappingURL=main.css.map */

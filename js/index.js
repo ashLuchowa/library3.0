@@ -9,6 +9,7 @@ const myLibrary = [harryPotter, pridePrejudice, theArt, intelligentInvestor];
 
 // Display Books UI
 const mainContainer = document.querySelector('.container');
+let formContainer = document.createElement('form');
 
 // Book Constructor
 function Book(title, author, pages, read) {
@@ -93,14 +94,13 @@ function addBtn() {
 
 // Add Button Event Listener
 function pressAddBtn() {
-    alert('You Pressed!');
+    formContainer.classList.toggle('form-active');
 };
 
 // Create Form UI
 function createForm() {
     // Main Form div Container
     const addBookForm = document.createElement('div');
-    const formContainer = document.createElement('form');
     addBookForm.classList.add('addBookForm');
     mainContainer.appendChild(addBookForm);
     addBookForm.appendChild(formContainer);

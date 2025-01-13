@@ -24,3 +24,12 @@
     display: flex;
     justify-content: end;
 }
+
+.addBookForm {
+    form {
+        display: none;
+    }
+    .form-active {
+        display: block;
+    }
+}
