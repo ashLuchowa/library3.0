@@ -132,7 +132,7 @@ function createForm() {
         inputContainer.setAttribute('id', `${value}`);
         mainForm.appendChild(inputContainer);
         inputContainer.setAttribute('name', `${value}`);
-        
+        inputContainer.required = 'true';
     }
 
     formContent('title', 'text');
