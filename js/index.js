@@ -127,11 +127,12 @@ function createForm() {
         labelContainer.textContent = `${value}: `;
 
         // Input
-        const titleContainer = document.createElement('input');
-        titleContainer.type = `${inputType}`;
-        titleContainer.setAttribute('id', `${value}`);
-        mainForm.appendChild(titleContainer);
-        titleContainer.setAttribute('name', `${value}`);
+        const inputContainer = document.createElement('input');
+        inputContainer.type = `${inputType}`;
+        inputContainer.setAttribute('id', `${value}`);
+        mainForm.appendChild(inputContainer);
+        inputContainer.setAttribute('name', `${value}`);
+        
     }
 
     formContent('title', 'text');
