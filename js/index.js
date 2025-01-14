@@ -150,10 +150,26 @@ function createForm() {
         submitBtnContainer.addEventListener('click', (e)=> {
             e.preventDefault();
             submitForm();
+            resetForm();
         });
     }
     submitBtnUI();
 };
+
+// Reset and Hide Form
+function resetForm() {
+    const inputTitleContainer = document.querySelector('.form-title input');
+    const inputAuthorContainer = document.querySelector('.form-author input');
+    const inputPagesContainer = document.querySelector('.form-pages input');
+    const inputReadContainer = document.querySelector('.form-read input');
+
+    inputTitleContainer.value = '';
+    inputAuthorContainer.value = '';
+    inputPagesContainer.value = '';
+    inputReadContainer.checked = false;
+
+    formContainer.classList.toggle('form-active');
+}
 
 // Submit the form
 function submitForm() {
